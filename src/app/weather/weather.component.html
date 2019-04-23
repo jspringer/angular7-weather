@@ -1,0 +1,67 @@
+<div id="outer-container" 
+[ngClass]="{'bg-sunny': this.weatherData.current.condition.text == 'Sunny', 'bg-cloudy': this.weatherData.current.condition.text == 'Cloudy'}">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6" id="firstContentDiv">
+        <h2 class="text-center" id="weatherTitle">Weather</h2>
+        <form class="noBreak"
+          [formGroup]="weatherSearchForm"
+          (ngSubmit)="sendToAPIXU(weatherSearchForm.value)"
+        >
+          <div class="form-group" id="weatherOuter">
+            <input
+              class="form-control"
+              type="text"
+              id="weatherLocation"
+              aria-describedby="weatherLocation"
+              placeholder="Please input a Location"
+              formControlName="location"
+            />
+          </div>
+          <div class="text-center" id="todayButton">
+            <button type="submit" class="btn btn-outline-success btn-md btn-size">
+              See Weather
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6" id="secondContentDiv">
+        <h2 class="text-center" id="weatherLocationName">{{ this.weatherData?.location.name }}</h2>
+        <div id="weatherIconDiv">
+          <img class="weatherIcon" src="{{ this.weatherData?.current.condition.icon }}">
+        </div>
+        <p class="text-center">
+          {{ this.weatherData?.current.condition.text }}
+        </p>
+        <p class="text-center" id="currentTemp">
+          {{ this.weatherData?.current.temp_f | number:'1.0-0' }}°F ({{ this.weatherData?.current.temp_c | number:'1.0-0' }}°C)
+        </p>
+        <p *ngIf="(this.weatherData?.current.temp_f | number:'1.0-0') !== (this.weatherData.current.feelslike_f | number:'1.0-0')" class="text-center" id="feelsTemp">
+          Feels: {{ this.weatherData?.current.feelslike_f | number:'1.0-0' }}°F ({{ this.weatherData?.current.feelslike_c | number:'1.0-0' }}°C) 
+        </p>
+        <div *ngIf="this.weatherData" class="text-center" id="sevenDaysOuter" >
+          <div class="text-center calendarRow">
+            <div *ngFor="let dayWeather of this.weatherData.forecast.forecastday" class="text-center calendarCol dayTemp" >
+              <div class="dayIcon">
+                <img src="{{ dayWeather.day.condition.icon }}" />
+              </div>
+              <div class="day">
+                {{ dayWeather.date_epoch * 1000 + 86400000 | date: 'EEE' }}
+              </div>
+              <div class="dayHigh">
+                H: {{ dayWeather.day.maxtemp_f | number:'1.0-0' }} 
+              </div>
+              <div class="dayLow">
+                L: {{ dayWeather.day.mintemp_f | number:'1.0-0' }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footerOuter">
+    <footer class="main-footer"><a href="http://jasonspringer.me/">Jason Springer</a></footer>
+  </div>
+</div>
