@@ -23,6 +23,8 @@ export class WeatherComponent implements OnInit {
     this.weatherSearchForm = this.formBuilder.group({
       location: [""]
     });
+    /* disabling since getCurrentPosition will not work from insecure origins (host without SSL)
+    
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
           position => {
@@ -47,11 +49,11 @@ export class WeatherComponent implements OnInit {
               }
           }
       );
-    } else {
-        this.apixuService.getWeather("New York City").subscribe(data => {
-          this.weatherData = data;
-          console.log(data);
-        });
+    } else { */
+      this.apixuService.getWeather("New York City").subscribe(data => {
+        this.weatherData = data;
+        console.log(data);
+      });
     }
   }
 
