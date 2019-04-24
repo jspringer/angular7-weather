@@ -31,10 +31,10 @@
           <img class="weatherIcon" src="{{ this.weatherData.current.condition.icon }}">
         </div>
         <p class="text-center">
-          {{ this.weatherData.current.condition.text }}
+          <span class="weight100">{{ this.weatherData.current.condition.text }}</span>
         </p>
         <p class="text-center" id="currentTemp">
-          {{ this.weatherData.current.temp_f | number:'1.0-0' }}°F ({{ this.weatherData.current.temp_c | number:'1.0-0' }}°C)
+          {{ this.weatherData.current.temp_f | number:'1.0-0' }}°F <span class="weight100">({{ this.weatherData.current.temp_c | number:'1.0-0' }}°C)</span>
         </p>
         <p *ngIf="(this.weatherData.current.temp_f | number:'1.0-0') !== (this.weatherData.current.feelslike_f | number:'1.0-0')" class="text-center" id="feelsTemp">
           Feels: {{ this.weatherData.current.feelslike_f | number:'1.0-0' }}°F ({{ this.weatherData.current.feelslike_c | number:'1.0-0' }}°C) 

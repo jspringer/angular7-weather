@@ -15,8 +15,8 @@ h3 {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-#todayButton {
-
+.weight100 {
+  font-weight: 100;
 }
 
 .btn-size {
@@ -39,7 +39,7 @@ h3 {
 }
 
 #weatherIconDiv {
-  margin: 0 0 3px 0;
+  margin: 10px 0 0 0;
   text-align: center;
   align-content: center;
   align-items: center;
