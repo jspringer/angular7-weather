@@ -26,18 +26,18 @@
         </form>
       </div>
       <div class="col-md-6" id="secondContentDiv">
-        <h2 class="text-center" id="weatherLocationName">{{ this.weatherData?.location.name }}</h2>
+        <h2 class="text-center" id="weatherLocationName">{{ this.weatherData.location.name }}</h2>
         <div id="weatherIconDiv">
-          <img class="weatherIcon" src="{{ this.weatherData?.current.condition.icon }}">
+          <img class="weatherIcon" src="{{ this.weatherData.current.condition.icon }}">
         </div>
         <p class="text-center">
-          {{ this.weatherData?.current.condition.text }}
+          {{ this.weatherData.current.condition.text }}
         </p>
         <p class="text-center" id="currentTemp">
-          {{ this.weatherData?.current.temp_f | number:'1.0-0' }}°F ({{ this.weatherData?.current.temp_c | number:'1.0-0' }}°C)
+          {{ this.weatherData.current.temp_f | number:'1.0-0' }}°F ({{ this.weatherData.current.temp_c | number:'1.0-0' }}°C)
         </p>
-        <p *ngIf="(this.weatherData?.current.temp_f | number:'1.0-0') !== (this.weatherData.current.feelslike_f | number:'1.0-0')" class="text-center" id="feelsTemp">
-          Feels: {{ this.weatherData?.current.feelslike_f | number:'1.0-0' }}°F ({{ this.weatherData?.current.feelslike_c | number:'1.0-0' }}°C) 
+        <p *ngIf="(this.weatherData.current.temp_f | number:'1.0-0') !== (this.weatherData.current.feelslike_f | number:'1.0-0')" class="text-center" id="feelsTemp">
+          Feels: {{ this.weatherData.current.feelslike_f | number:'1.0-0' }}°F ({{ this.weatherData.current.feelslike_c | number:'1.0-0' }}°C) 
         </p>
         <div *ngIf="this.weatherData" class="text-center" id="sevenDaysOuter" >
           <div class="text-center calendarRow">
