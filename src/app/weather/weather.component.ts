@@ -50,11 +50,10 @@ export class WeatherComponent implements OnInit {
           }
       );
     } else { */
-      this.apixuService.getWeather("New York City").subscribe(data => {
-        this.weatherData = data;
-        console.log(data);
-      });
-    }
+    this.apixuService.getWeather("New York City").subscribe(data => {
+      this.weatherData = data;
+      console.log(data);
+    });
   }
 
   sendToAPIXU(formValues) {
